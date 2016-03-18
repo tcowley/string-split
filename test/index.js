@@ -1,67 +1,68 @@
 var test = require('tape-catch');
-var stringpad = require('../index.js');
+var stringSplit = require('../index.js');
 
-// misc items:
-// - empty string
-// - string shorter than width
+test('test strings shorter than width', function (t) {
+    t.plan(2);
 
-// width < 5 characters
+    var a = '';
+    var b = stringSplit(a, 10);
+    var c = [''];
+    t.deepEquals(b, c, "empty string");
 
-// string longer than width:
-// - white space at desired width boundary
-// - 5 character word 
-
-
-// word fits on the current line, so add it with a single preceding space
-
-// existing line, at least 5 spaces left, word is at least 6 letters long
-    // fill the rest of the line
-    // but, there must be at least 3 chars after the split
-
-// start a new line 
-
-// wrap all really long words onto additional lines
-
-
-
-
-test('test empty string with alignment', function (t) {
-    t.plan(4);
-    
-    ['left', 'right', 'center', 'justify'].forEach(function(alignment) {
-        var a = '';
-        var b = stringpad(a, 10, alignment);
-        var c = (new Array(11)).join(' ');
-        t.equal(b, c, "empty string padded to specified width with alignment '" + alignment + "'");
-    });
+    a = 'A B C';
+    b = stringSplit(a, 10);
+    c = [a];
+    t.deepEquals(b, c, "string shorter than width");
 
 });
 
-test('test short strings with various alignments', function (t) {
-    t.plan(4);
-    
-    var c = [ 'A B C     ', '     A B C', '  A B C   ', 'A   B    C' ];
 
-    ['left', 'right', 'center', 'justify'].forEach(function(alignment, i) {
-        var a = 'A B C';
-        var b = stringpad(a, 10, alignment);
-        //console.log('[' + b + ']', '[' + c[i] + ']' );
-        t.equal(b, c[i], "short string padded to specified width with alignment '" + alignment + "'");
-    });
-   
+test('test wrappable word at width boundary', function (t) {
+    t.plan(3);
+
+    a = '123456 123456';
+    b = stringSplit(a, 10);
+    c = ['123456', '123456'];
+    t.deepEquals(b, c, "6 character word with 4 spaces left until width is reached");
+
+    a = '12345 123456';
+    b = stringSplit(a, 10);
+    c = ['12345 123-', '456'];
+    t.deepEquals(b, c, "6 character word with 5 spaces left until width is reached");
+
+    a = '1234 123456';
+    b = stringSplit(a, 10);
+    c = ['1234 123-', '456'];
+    t.deepEquals(b, c, "6 character word with 6 spaces left until width is reached");
+
+
+
 });
 
-test('test long strings with various alignments', function (t) {
-    t.plan(4);
-    
-    ['left', 'right', 'center', 'justify'].forEach(function(alignment, i) {
-        var a = 'A B C D E F G H I J';
-        var b = stringpad(a, 10, alignment);
-        //console.log('[' + b + ']', '[' + a + ']' );
-        t.equal(b, a, "string longer than specified width is returned as-is for alignment '" + alignment + "'");
-    });
+test('test un-wrappable word at width boundary', function (t) {
+    t.plan(1);
+
+    // un-wrappable word at width boundary
+    // - 5 character word with 4 spaces left
+    // - 5 character word with 6 spaces left
+
+    a = '123456 12345';
+    b = stringSplit(a, 10);
+    c = ['123456', '12345'];
+    t.deepEquals(b, c, "5 character word with 4 spaces left until width is reached");
     
 });
 
+test('test word longer than width', function (t) {
+    t.plan(1);
+    
+    // word is longer than line:
+    // - 20 character word on 10 character width
 
+    a = '12345678901234567890';
+    b = stringSplit(a, 10);
+    c = ['123456789-', '012345678-', '90'];
+    t.deepEquals(b, c, "20 character word limited to with 10");
+    
+});
 
