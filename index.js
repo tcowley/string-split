@@ -1,4 +1,8 @@
-exports = module.exports = function stringSplit(str, width) {
+// --------------------------------------------------------------------------------
+// String Splitter Library
+// --------------------------------------------------------------------------------
+
+module.exports = function stringSplit(str, width) {
     var words = str.split(' ');
     var lines = [];
     var line = '';
@@ -9,6 +13,7 @@ exports = module.exports = function stringSplit(str, width) {
         // ---------------------------------------------------------
         // STEP 1: add words to the lines
         // ---------------------------------------------------------
+        
         
         // CASE 1: starting a new line
         if (!line.length) {
