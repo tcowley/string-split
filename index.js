@@ -7,6 +7,10 @@ module.exports = function stringSplit(str, width) {
     var lines = [];
     var line = '';
     
+    if (width < 2) {
+        throw new Error('width must be at least 2 characters');
+    }
+    
     words.forEach(function(word) {
         var offset;
         

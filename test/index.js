@@ -39,17 +39,22 @@ test('test wrappable word at width boundary', function (t) {
 
 });
 
-test('test un-wrappable word at width boundary', function (t) {
-    t.plan(1);
-
-    // un-wrappable word at width boundary
-    // - 5 character word with 4 spaces left
-    // - 5 character word with 6 spaces left
+test.only('test un-wrappable word at width boundary', function (t) {
 
     a = '123456 12345';
     b = stringSplit(a, 10);
     c = ['123456', '12345'];
     t.deepEquals(b, c, "5 character word with 4 spaces left until width is reached");
+    
+    a = '1234';
+    t.throws(function() { stringSplit(a, 1); },  "4 character word with 1 character width ");
+
+    a = '1234';
+    b = stringSplit(a, 2);
+    c = ['1-', '2-', '34'];
+    t.deepEquals(b, c, "4 character word with 2 character width ");
+    
+    t.end();
     
 });
 
