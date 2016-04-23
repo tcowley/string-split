@@ -1,8 +1,8 @@
 // --------------------------------------------------------------------------------
-// String Splitter Library
+// ASCII String Split Library
 // --------------------------------------------------------------------------------
 
-module.exports = function stringSplit(str, width) {
+module.exports = function asciiStringSplit(str, width) {
     var words = str.split(' ');
     var lines = [];
     var line = '';
@@ -30,7 +30,7 @@ module.exports = function stringSplit(str, width) {
         }
             
         // CASE 3: append a big word that will be split across lines
-        // - line has at least 5 spaces left
+        // - line has at least 5 spaces left, which is room for: 1 space, 3 chars and a hyphen
         // - word is at least 6 letters long
         // - resulting split ensures at least 3 characters on both lines
         else if ( line.length + 5 <= width && word.length > 5) {

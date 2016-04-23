@@ -2,4 +2,4 @@
 
 ## Description
 
-Using JavaScript, split an ascii string into shorter strings of a given max-width.
+Using JavaScript, split an ASCII string into shorter strings of a given max-width. Uses a simple algorithm to split longer words as necessary so that they fit.
