@@ -39,7 +39,7 @@ test('test wrappable word at width boundary', function (t) {
 
 });
 
-test.only('test un-wrappable word at width boundary', function (t) {
+test('test un-wrappable word at width boundary', function (t) {
 
     a = '123456 12345';
     b = stringSplit(a, 10);
