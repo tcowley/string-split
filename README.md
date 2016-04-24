@@ -17,7 +17,7 @@ Add this library to your current Node.js project using npm:
 npm install --save https://github.com/tcowley/ascii-string-split
 ```
 
-Or checkout the source:
+Or, checkout the source:
 
 ```
 git clone https://github.com/tcowley/ascii-string-split
@@ -30,8 +30,13 @@ Here is a basic code example. Full behaviour is documented in the **API Referenc
 
 ```JavaScript
 var asciiStringSplit = require('ascii-string-split');
-var bigString = 'a very very long string full of words composed entirely of ASCII characters.';
-var arrayOfStrings = asciiStringSplit(bigString, 20);
+
+var myString = 'a very very long string full of words composed entirely of ASCII characters.';
+
+var maxLength = 20;
+
+var arrayOfStrings = asciiStringSplit(myString, maxLength);
+
 console.log(arrayOfStrings);
 ```
 
@@ -51,19 +56,24 @@ This example will output:
 
 The library exports one method, which accepts two parameters:
 
-Param | Values | Description
------ | -------
-**asciiString** | Any length of ASCII string  | The string to be split into smaller strings 
-**maxLength**   | Any integer greater than 2 | The maximum length, in characters, that the smaller strings can be. The length must be at least 2 because the smallest split string is 1 character plus a hyphen!
+| Param | Values | Description |
+| ----- | ------- | ------ |
+| **asciiString** | Any length of ASCII string  | The string to be split into smaller strings |
+| **maxLength**   | Any integer greater than 2 | The maximum length, in characters, that the smaller strings can be. The length must be at least 2 because the smallest split string is 1 character plus a hyphen! |
 
 The return value is always an array. Illegal values throw an error.
 
 
 #### How String Splitting Works
 
-* The library adds words one at a time to a new string. 
-* If the word won't fit inside the new string, then it tries to split it, so that at least part of the word will fit. 
+* The library copies words one at a time to a new string, until:
+    * The new string is filled, OR
+    * The original string has no more words to copy.
+* If the new string is already filled, then another new string is started.
+* If a word won't fit inside the new string, then it tries to split it, so that at least part of the word will fit. 
     * A hyphen is added to the first part, so that it is clear that the word has been split.
+    * Small words aren't normally split, just big ones. See **How Word Splitting Works** for an explanation.
+
 
 #### How Word Splitting Works
 
@@ -91,7 +101,7 @@ $ cd ascii-string-split
 $ npm install
 $ npm test
 
-    // test output displays here
+// test output displays here
  
 ```
 
