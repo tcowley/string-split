@@ -79,9 +79,8 @@ The return value is always an array. Illegal values throw an error.
 
 There are two reasons for splitting a word:
 
-* **The word is pretty long, and can be safely split into smaller bits and still be _readable_**
-    * This only applies to words that are **at least 6 characters long**, so that at least 3 characters are left in each half of the split string.
-    * Note that _readable_ doesn't mean _natural_. The library does not use a dictionary algorithm to split words in the places you normally would.
+* **The word is pretty long, and can be split into smaller _readable_ chunks**
+    * This only applies to words that are **at least 6 characters long**, so that at least 3 characters are left in each half of the split string. The resulting strings are _readable_, even if the split is not at a _natural_ location, like the end of a syllable.
 * **The word, all by itself, is longer than the max-length parameter**
     * When this occurs, there is no choice but to split the word. The library will start a new string with the word, and split it at the max-length boundary, minus one character, so that a hyphen can be added at the end. 
     * This behaviour only really matters when max-length is very small, or words are very large. For example:
