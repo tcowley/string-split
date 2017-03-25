@@ -1,33 +1,33 @@
 {
-    "name": "ascii-string-split",
-    "version": "0.0.1",
-    "description": "Split an ASCII string into strings less than or equal to a specific width.",
-    "author": "Trevor Cowley tcowley@gmail.com",
-    "license": "ISC",
-    "main": "index.js",
-    "scripts": {
-        "test": "tape './test/**/*.js' | tap-difflet",
-        "preversion": "npm test",
-        "version": "",
-        "postversion": "git push && git push --tags"
-    },
-    "repository": "tcowley/ascii-string-split", 
-    "bugs": {
-        "url": "https://github.com/tcowley/ascii-string-split/issues"
-    },
-    "keywords": [
-        "cli",
-        "ascii",
-        "string",
-        "split",
-        "library"
-    ],
-    "devDependencies": {
-        "blue-tape": "^0.1.10",
-        "glob": "^5.0.14",
-        "tap-difflet": "^0.3.0",
-        "tap-min": "^1.0.0",
-        "tape": "^4.0.3",
-        "tape-catch": "^1.0.4"
-    }
+  "name": "ascii-string-split",
+  "version": "1.0.0",
+  "description": "Split an ASCII string into strings less than or equal to a specific width.",
+  "author": "Trevor Cowley tcowley@gmail.com",
+  "license": "ISC",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape './test/**/*.js' | tap-difflet",
+    "preversion": "npm test",
+    "version": "",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": "tcowley/ascii-string-split",
+  "bugs": {
+    "url": "https://github.com/tcowley/ascii-string-split/issues"
+  },
+  "keywords": [
+    "cli",
+    "ascii",
+    "string",
+    "split",
+    "library"
+  ],
+  "devDependencies": {
+    "blue-tape": "^0.1.10",
+    "glob": "^5.0.14",
+    "tap-difflet": "^0.3.0",
+    "tap-min": "^1.0.0",
+    "tape": "^4.0.3",
+    "tape-catch": "^1.0.4"
+  }
 }
