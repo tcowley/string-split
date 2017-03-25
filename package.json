@@ -1,18 +1,17 @@
 {
     "name": "ascii-string-split",
     "version": "0.0.1",
-    "description": "Split an ascii string into strings less than or equal to a specific width",
+    "description": "Split an ASCII string into strings less than or equal to a specific width.",
     "author": "Trevor Cowley tcowley@gmail.com",
     "license": "ISC",
     "main": "index.js",
-    "private": true,
     "scripts": {
-        "test": "tape './test/**/*.js' | tap-difflet"
+        "test": "tape './test/**/*.js' | tap-difflet",
+        "preversion": "npm test",
+        "version": "",
+        "postversion": "git push && git push --tags"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/tcowley/ascii-string-split"
-    },
+    "repository": "tcowley/ascii-string-split", 
     "bugs": {
         "url": "https://github.com/tcowley/ascii-string-split/issues"
     },
