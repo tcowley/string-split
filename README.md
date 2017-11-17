@@ -1,4 +1,4 @@
-# ascii-string-split  ![Build Status](https://travis-ci.org/tcowley/ascii-string-split.svg?branch=master)
+# ascii-string-split  [![Build Status](https://travis-ci.org/tcowley/ascii-string-split.svg?branch=master)](https://travis-ci.org/tcowley/ascii-string-split)
 
 ## Description
 
